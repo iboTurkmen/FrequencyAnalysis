@@ -4,13 +4,27 @@ def DecryEngChar():
     EngChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
                'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
                'U', 'V', 'W', 'X', 'Y', 'Z']
+    freq_analysis = {}
+    letters = 0
+    ciphertxt = list(input("Please Enter The Text To Decrypt: ").upper())
+    for letters in EngChar:
+        freq_analysis[letters] = 0
+
+    print(freq_analysis)
+    print(ciphertxt)
+    for letters in ciphertxt:
+        if letters in EngChar:
+            freq_analysis[letters] += 1
+
+    print(sorted(freq_analysis.values()))
+    print(freq_analysis)
 
 
 def DecryTurkChar():
     result = ""
-    TurkChar = ['A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H', 'I', 'İ', 'J',
-                'K', 'L', 'M', 'N', 'O', 'Ö', 'P', 'R', 'S', 'Ş', 'T', 'U', 'Ü',
-                'V', 'Y', 'Z']
+    TurkChar = ['A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H',
+                'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'Ö', 'P',
+                'R', 'S', 'Ş', 'T', 'U', 'Ü', 'V', 'Y', 'Z']
 
 
 
