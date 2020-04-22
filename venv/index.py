@@ -4,21 +4,29 @@ def DecryEngChar():
     EngChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
                'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
                'U', 'V', 'W', 'X', 'Y', 'Z']
+    freq_letters = ['E', 'T', 'A', 'O', 'I', 'N', 'S', 'H', 'R',
+                    'D', 'L', 'C', 'U', 'M', 'W', 'F', 'G', 'Y',
+                    'P', 'B', 'V', 'K', 'J', 'X', 'Q', 'Z']
     freq_analysis = {}
-    letters = 0
-    ciphertxt = list(input("Please Enter The Text To Decrypt: ").upper())
-    for letters in EngChar:
-        freq_analysis[letters] = 0
+    ciphertxt = input("Please Enter The Text To Decrypt: ").upper()
+    ciphertxt = ciphertxt.replace(' ', '')
+    ciphertxt = ciphertxt.replace("'", '')
+    ciphertxt = ciphertxt.replace('.', '')
+    ciphertxt = ciphertxt.replace(',', '')
+    for i in ciphertxt:
+        if i not in freq_analysis:
+            freq_analysis[i] = 1
+        else:
+            freq_analysis[i] += 1
+    freq_Numbers = sorted(freq_analysis.values())
+    freq_Numbers.reverse()
 
-    print(freq_analysis)
-    print(ciphertxt)
-    for letters in ciphertxt:
-        if letters in EngChar:
-            freq_analysis[letters] += 1
+    maxfreq = max(freq_analysis, key=freq_analysis.get)
 
-    print(sorted(freq_analysis.values()))
-    print(freq_analysis)
-
+    print(maxfreq)
+    print("Frequencies Of Letters in English Language:- " + str(freq_letters))
+    print("Frequencies Of Ciphertext:- " + str(freq_Numbers))
+    print("Frequencies Analysis Of Ciphertext:- " + str(freq_analysis))
 
 def DecryTurkChar():
     result = ""
