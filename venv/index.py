@@ -1,9 +1,39 @@
+def Digraph(result):
+    digraph_d = {}
+    digraphs = ['TH', 'HE', 'AN', 'IN', 'ER', 'ON', 'RE', 'ED', 'ND', 'HA', 'AT', 'EN']
+    dlist = ""
+    dig_list = []
+    digraph_res = []
+    uppres = result.upper()
+
+    for each in range(0, len(uppres)):
+        dlist += uppres[each]
+        if each == each:
+            each += 1
+        if (each % 2) == 0:
+            dig_list.append(dlist)
+            dlist = ""
+
+    for each in range(0, len(dig_list)):
+        for i in range(0, len(digraphs)):
+            if dig_list[each] == digraphs[i]:
+                digraph_res.append(dig_list[each])
+
+    for each in digraph_res:
+        if each not in digraph_d:
+            digraph_d[each] = 1
+        else:
+            digraph_d[each] += 1
+
+    return digraph_d
+
 
 def DecryEngChar():
     result = ""
     freq_letters = [' ', 'e', 't', 'a', 'o', 'i', 'n', 's', 'h', 'r',
                     'd', 'l', 'c', 'u', 'm', 'w', 'f', 'g', 'y',
                     'p', 'b', 'v', 'k', 'j', 'x', 'q', 'z']
+
     freq_analysis = {}
     ciphertxt = input("Please Enter The Text To Decrypt: ").upper()
     ciphertxt = ciphertxt.replace("'", '')
@@ -72,11 +102,16 @@ def DecryEngChar():
             result = result.replace("H", "p")
         if each == "p":
             result = result.replace("P", "i")
+
     print("Frequencies Of Letters in English Language:- " + str(freq_letters))
     print("Frequencies Of Ciphertext:- " + str(freq_Numbers))
     print("Frequencies Analysis Of Ciphertext:- " + str(freq_analysis))
     print(result)
+    result = result.replace(' ', '')
+    dig_res = Digraph(result)
+    print("Digraph Of Plaintext" + str(dig_res))
     main()
+
 
 def DecryTurkChar():
     result = ""
